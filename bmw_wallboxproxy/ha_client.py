@@ -25,6 +25,8 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 # otherwise the real failures drown in noise.
 NON_NUMERIC_STATES = {"unavailable", "unknown", "none", "null", ""}
 
+BOOL_STATES = {"on": 1.0, "true": 1.0, "off": 0.0, "false": 0.0}
+
 # One pooled session for every entity read. Without it each poll cycle opened a
 # fresh TCP connection per entity — at one cycle per second that is well over a
 # million short-lived sockets a day, all sitting in TIME_WAIT.
@@ -59,6 +61,12 @@ def read_ha_state(entity_id: str) -> Optional[float]:
         with stats_lock:
             stats["ha_entities_unavailable"] += 1
         return None
+
+    text = str(raw).strip().lower()
+    if text in BOOL_STATES:
+        with stats_lock:
+            stats["ha_reads_ok"] += 1
+        return BOOL_STATES[text]
 
     try:
         value = float(raw)

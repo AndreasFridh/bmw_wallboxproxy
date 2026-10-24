@@ -28,6 +28,8 @@ def get_output_values() -> dict:
     raw_p2 = get("p2") / 1000.0 + offset_kw / 3.0
     raw_p3 = get("p3") / 1000.0 + offset_kw / 3.0
     p1, p2, p3 = _apply_phase_order(order, raw_p1, raw_p2, raw_p3)
+    if snap.get("pause", 0.0) >= 0.5:
+        i1 = i2 = i3 = p_total = p1 = p2 = p3 = 0.0
     freq = get("freq")
     e_import = get("e_import_total")
     e_export = get("e_export_total")
@@ -91,6 +93,8 @@ def get_register_map() -> Dict[int, int]:
     raw_p2 = get_value("p2") / 1000.0 + offset_kw / 3.0
     raw_p3 = get_value("p3") / 1000.0 + offset_kw / 3.0
     p1, p2, p3 = _apply_phase_order(order, raw_p1, raw_p2, raw_p3)
+    if snap.get("pause", 0.0) >= 0.5:
+        i1 = i2 = i3 = p_total = p1 = p2 = p3 = 0.0
     freq = get_value("freq")
     e_import_total = get_value("e_import_total")
     e_export_total = get_value("e_export_total")

@@ -150,6 +150,7 @@ ENTITY_FIELDS = (
     ("p3", "Power L3", "Home Assistant entity for phase 3 active power."),
     ("e_import_total", "Imported energy", "Home Assistant entity for total imported energy."),
     ("e_export_total", "Exported energy", "Home Assistant entity for total exported energy."),
+    ("pause", "Pause", "Home Assistant boolean entity (input_boolean, switch, binary_sensor). When on, all current and power values sent to the wallbox are forced to 0 so it neither charges nor discharges."),
     ("power_offset", "Power offset", "Home Assistant entity for power offset in watts (e.g. an input_number helper). Added to all power readings before they reach the charger. Negative = charger sees more export and ramps up. Leave empty to use the manual override in the dashboard instead."),
 )
 
@@ -168,6 +169,7 @@ ENTITY_DEFAULTS = {
     "p3": "",
     "e_import_total": "",
     "e_export_total": "",
+    "pause": "",
     "power_offset": "",
 }
 
@@ -351,4 +353,5 @@ DEFAULTS = {
     "p1": 0.0, "p2": 0.0, "p3": 0.0,
     "e_import_total": 0.0, "e_export_total": 0.0,
     "power_offset": 0.0,
+    "pause": 0.0,
 }
