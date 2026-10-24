@@ -50,5 +50,8 @@ configuration:
   e_export_total_entity:
     name: Exported energy entity
     description: Home Assistant entity ID for total exported energy.
+  pause_entity:
+    name: Pause entity
+    description: Home Assistant boolean entity ID. When on, all current and power values sent to the wallbox are forced to 0 (no charging or discharging).
 network:
   502/TCP: Modbus TCP listener for the BMW wallbox or TCP serial gateway

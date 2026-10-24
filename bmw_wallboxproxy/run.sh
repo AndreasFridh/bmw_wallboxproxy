@@ -30,6 +30,7 @@ export HA_ENTITY_P2="$(bashio::config 'p2_entity')"
 export HA_ENTITY_P3="$(bashio::config 'p3_entity')"
 export HA_ENTITY_E_IMPORT_TOTAL="$(bashio::config 'e_import_total_entity')"
 export HA_ENTITY_E_EXPORT_TOTAL="$(bashio::config 'e_export_total_entity')"
+export HA_ENTITY_PAUSE="$(bashio::config 'pause_entity')"
 export HA_ENTITY_POWER_OFFSET="$(bashio::config 'power_offset_entity')"
 
 bashio::log.info "Starting BMW Wallbox Proxy add-on"

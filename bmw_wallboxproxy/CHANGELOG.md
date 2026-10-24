@@ -1,3 +1,7 @@
+## 0.2.19
+
+- Add optional Pause entity (HA boolean): when on, all current and power values served to the wallbox are forced to 0
+
 ## 0.2.18
 
 - Answer non-read Modbus requests with a proper exception reply instead of silently dropping them; RTU frames are now length-decoded per function code rather than assumed to be 8 bytes
